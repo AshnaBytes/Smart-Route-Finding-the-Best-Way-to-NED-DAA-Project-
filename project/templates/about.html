@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAA PROJECT</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body,html {
+            background-color: whitesmoke;
+            margin: 0;
+            font-size: 0;
+            font-family: Helvetica, Verdana, sans-serif;
+           
+        }
+
+       
+
+        nav {
+            position: fixed;
+            top: 35px;
+            left: 0;
+            width: 100%;
+            padding: 16px 20px 30px 20px;
+            display: flex;
+            align-items: center;
+            transition: 0.3s ease-out;
+            background-color: #388892b2;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            color: white;
+            font-size: 16px;
+            z-index: 10;
+        }
+
+        .list {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        @media (min-width: 640px) {
+            .list {
+                justify-content: flex-end;
+                flex: 1;
+            }
+        }
+
+        .list li {
+            margin-right: 20px;
+        }
+
+        nav.is-hidden {
+            transform: translateY(-100%);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            z-index: 3;
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                display: none;
+            }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 120px auto;
+            /* increased top margin from 50px to 150px */
+            padding: 50px;
+            background-color: #083d56d6;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: border 0.3s ease, box-shadow 0.3s ease;
+
+        }
+
+        .container:hover {
+            transform: translateY(-10px);
+            /* Moves container up by 10px */
+            background-color: #083d56d6;
+            box-shadow: 0 0 50px #78c4c4;
+
+        }
+
+        .heading {
+            font-size: 25px;
+            font-weight: bold;
+            color: #0b0e0f;
+            margin-bottom: 10px;
+        }
+
+        .subheading {
+            font-size: 20px;
+            font-weight: 600;
+            color: #03054a;
+            margin-bottom: 10px;
+            
+        }
+
+
+        .description {
+            font-size: 15px;
+            color: #d1cfcf;
+            line-height: 1.8;
+            text-align: justify;
+            margin-bottom: 25px;
+            padding: 0 10px;
+        }
+
+        ul.description {
+            text-align: left;
+            padding-left: 40px;
+            margin-top: -15px;
+            margin-bottom: 25px;
+        }
+
+
+        @media (max-width: 600px) {
+            .description {
+                font-size: 14px;
+                padding: 0 5px;
+            }
+
+            ul.description {
+                padding-left: 25px;
+                font-size: 14px;
+            }
+
+            .container {
+                padding: 20px;
+                margin: 20px;
+                width: 90%;
+            }
+
+            .heading {
+                font-size: 22px;
+            }
+
+            .subheading {
+                font-size: 15px;
+            }
+
+
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+                font-size: 14px;
+            }
+
+            .list {
+                flex-direction: column;
+                gap: 10px;
+                margin-top: 10px;
+            }
+
+            .list li {
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul class="list">
+            <li><a href="{{ url_for('daa') }}">Home</a></li>
+            <li><a href="{{ url_for('about') }}" >About</a></li>
+            <li><a href="{{ url_for('project') }}">Project</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1 class="heading">RouteWise:Finding the Best Way to NED
+        </h1>
+        <h2 class="subheading">Find the Most Efficient Gate to NED from Your Location</h2>
+        <p class="description">
+            This project aims to find the most efficient routes for four team members traveling from different areas of
+            Karachi —
+            North Nazimabad, North Karachi, Gulshan-e-Iqbal, and Water Pump — to NED University, which has four entry
+            gates.
+            Each member starts from a unique location, and the objective is to determine which gate provides the
+            shortest path for them.
+        </p>
+        <p class="description">
+            Using a graph-based city model, we implement and compare four algorithms:
+        </p>
+        <ul class="description">
+            <li>DFS (Depth-First Search)</li>
+            <li>BFS (Breadth-First Search)</li>
+            <li>Dijkstra’s Algorithm</li>
+            <li>A* (A-Star) Search</li>
+        </ul>
+        <p class="description">
+            We evaluate each algorithm based on:
+        </p>
+        <ul class="description">
+            <li>Path length</li>
+            <li>Execution time</li>
+            <li>Overall efficiency</li>
+        </ul>
+        <p class="description">
+            Results include visual graphs, performance comparisons, and gate recommendations to ensure each member takes
+            the most efficient route.
+            This project blends real-world mapping with algorithmic problem-solving.
+        </p>
+    </div>
+
+
+
+    <div class="background-overlay"></div>
+    
+<script>
+    const links = document.querySelectorAll('.list a');
+    const currentPage = window.location.pathname.split("/").pop();
+  
+    links.forEach(link => {
+      if (link.getAttribute('href') === currentPage) {
+        link.style.textDecoration = "underline";
+        link.style.fontWeight = "bold";
+      }
+    });
+  </script>
+  
+</body>
+
+</html>
